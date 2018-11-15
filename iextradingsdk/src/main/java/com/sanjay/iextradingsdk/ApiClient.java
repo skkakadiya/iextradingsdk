@@ -1,8 +1,10 @@
 package com.sanjay.iextradingsdk;
 
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,8 +12,11 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.List;
 
 public class ApiClient {
+
+    List<String> list;
 
 
     private Response mResponse = null;
@@ -26,6 +31,7 @@ public class ApiClient {
     }
 
     public void requestSymbol(String url){
+
         new GetSymbol().execute(url);
     }
 
@@ -47,7 +53,7 @@ public class ApiClient {
                 e.printStackTrace();
             }
 
-            return null;
+            return sb.toString();
         }
 
         @Override
