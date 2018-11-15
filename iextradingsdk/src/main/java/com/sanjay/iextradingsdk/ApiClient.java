@@ -1,13 +1,8 @@
 package com.sanjay.iextradingsdk;
 
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.text.TextUtils;
-import android.widget.Toast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -61,12 +56,7 @@ public class ApiClient {
             super.onPostExecute(s);
 
             if(!TextUtils.isEmpty(s)) {
-                try {
-                    JSONObject jsonObject = new JSONObject(s);
-                    mResponse.onResponseObtained(jsonObject);
-                } catch (JSONException e) {
-                    mResponse.onErrorObatained("Invalid JSON!");
-                }
+                mResponse.onResponseObtained(s);
             } else {
                 mResponse.onErrorObatained("Please try again later!");
             }
